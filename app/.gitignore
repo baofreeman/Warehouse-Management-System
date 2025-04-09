@@ -1,0 +1,37 @@
+# Global ignores
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment
+.env
+.env.*.local
+
+# Client specific
+apps/client/dist/
+apps/client/node_modules/
+
+# Server specific
+apps/server/build/
+apps/server/node_modules/
+apps/server/prisma/dev.db

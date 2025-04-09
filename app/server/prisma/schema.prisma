@@ -1,0 +1,32 @@
+// [041025FREEMAN] Add file schema prisma User, Enterprise, Role
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id  String  @id @default(uuid())
+  email String  @unique
+  name  String
+  password  String
+  role  Role @default(STAFF)
+  enterprise  Enterprise? @relation(fields: [enterpriseId], references: [id])
+  enterpriseId  String?
+  createdAt DateTime @default(now())
+}
+
+model Enterprise {
+  id  String  @id @default(uuid())
+  name  String
+  users User[]
+}
+
+enum Role {
+  ADMIN
+  STAFF
+}
