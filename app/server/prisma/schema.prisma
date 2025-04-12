@@ -17,7 +17,13 @@ model User {
   role  Role @default(STAFF)
   enterprise  Enterprise? @relation(fields: [enterpriseId], references: [id])
   enterpriseId  String?
+  isVerified Boolean @default(false)
+  isActive Boolean @default(true)
+  isDeleted Boolean @default(false)
+  lastLoginFingerprintHash String?
   createdAt DateTime @default(now())
+  refreshTokens RefreshToken[]
+  verificationToken VerificationToken[]
 }
 
 model Enterprise {
@@ -25,6 +31,26 @@ model Enterprise {
   name  String
   users User[]
 }
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
+model VerificationToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  type      String 
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
 
 enum Role {
   ADMIN

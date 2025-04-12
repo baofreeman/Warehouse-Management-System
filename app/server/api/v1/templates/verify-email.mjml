@@ -1,0 +1,30 @@
+<mjml>
+  <mj-body background-color="#f6f6f6">
+    <mj-section background-color="#ffffff" padding="30px">
+      <mj-column>
+        <mj-text
+          font-size="24px"
+          color="#333333"
+          font-family="Arial, sans-serif"
+          font-weight="bold"
+        >
+          Email Verification
+        </mj-text>
+        <mj-text font-size="16px" color="#555555">
+          Hello {{name}}, please click the button below to verify your account:
+        </mj-text>
+        <mj-button
+          href="{{verifyUrl}}"
+          background-color="#007bff"
+          color="white"
+          font-size="16px"
+          padding="15px 25px"
+          border-radius="5px"
+          text-transform="uppercase"
+        >
+          Verify Now
+        </mj-button>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
